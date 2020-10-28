@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
 
 import TouchScreen from '././src/screens/TouchScreen';
+import PinScreen from '././src/screens/PinScreen';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator headerMode="none">
         <Stack.Screen name="TouchScreen" component={TouchScreen}/>
+        <Stack.Screen name="PinScreen" component={PinScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
