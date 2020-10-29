@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Dimensions } from 'react-native';
 import { FontAwesome5, MaterialIcons, AntDesign } from '@expo/vector-icons';
+import { LineChart } from 'react-native-chart-kit';
 
 import Text from '../../components/Text';
 
@@ -38,6 +40,38 @@ const Home = () => {
       <Text center black color="#727479" >
         Current Balance
       </Text>
+
+      <Chart>
+        <LineChart data={{
+          labels: ['May', 'June', 'July', 'Aug', 'Sept', 'Oct'],
+          datasets: [{
+            data: [
+              Math.random() * 10,
+              Math.random() * 10,
+              Math.random() * 10,
+              Math.random() * 10,
+              Math.random() * 10,
+              Math.random() * 10,
+            ]
+          }]
+        }}
+        width={Dimensions.get('window').width}
+        height={250}
+        yAxisLabel="$"
+        yAxisSuffix="k"
+        chartConfig={{
+          backgroundGradientFrom: "#1e1e1e",
+          backgroundGradientTo: "#1e1e1e",
+          color: (opacity = 1) => `rgba(81, 150, 244, ${opacity})`,
+          labelColor: () => `rgba(225, 225, 225, 0.2)`,
+          strokeWidth: 3,
+        }}
+
+        widthVerticalLines={false}
+        widthHorizontalLines={false}
+        bezier
+        />
+      </Chart>
 
       <Purchases ListHeaderComponent={
         <>
@@ -88,6 +122,10 @@ const Welcome = styled.View`
   flex: 1;
   padding: 0 16px;
 `
+
+const Chart = styled.View`
+  margin: 32px 0;
+`;
 
 const Purchases = styled.FlatList `
   background-color: #2c2c2c;
