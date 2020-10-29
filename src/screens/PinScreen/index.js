@@ -11,6 +11,13 @@ const PinScreen = ({ navigation }) => {
   
   const totalPins = 6;
 
+  useEffect(() => {
+    if (pinCount === totalPins) {
+      navigation.navigate("Tabs");
+      setPinCount(0);
+    }
+  }, [pinCount]);
+
   const renderPins = () => {
     const pins = [];
 
@@ -29,7 +36,9 @@ const PinScreen = ({ navigation }) => {
   };
 
   const pressKey = (_, index) => {
-
+    setPinCount((prev) => {
+      return index != 10 ? prev + 1 : prev - 1;
+    });
   }
 
   return (

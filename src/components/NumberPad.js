@@ -15,7 +15,9 @@ const NumberPad = ({ onPress }) => {
     "7",
     "8",
     "9",
+    "#",
     "0",
+    
     <MaterialIcons  name="keyboard-backspace" size={24} />
   ]
   
@@ -40,13 +42,13 @@ const KeyPad = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 0 30px;
 `
 
 const Number = styled.TouchableOpacity`
-  width: 66px;
-  height: 66px;
+  width: 68px;
+  height: 68px;
   border-radius: 32px;
   align-items: center;
   justify-content: center;
