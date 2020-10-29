@@ -4,7 +4,21 @@ import { FontAwesome5, MaterialIcons, AntDesign } from '@expo/vector-icons';
 
 import Text from '../../components/Text';
 
+import purchaseData from '../../services/purchase';
+
 const Home = () => {
+  const renderPurchase = ({ item }) => (
+    <Purchase>
+    <PurchaseInfo>
+      <Text heavy>{item.product}</Text>
+      <Text bold margin="2px 0 2px 0" >{item.store}</Text>
+      <Text small color="#727479" >{item.address}</Text>
+    </PurchaseInfo>
+      <Text heavy>{item.price}</Text>
+    </Purchase>
+  );
+    
+
   return (
     <Container>
       <Header>
@@ -18,7 +32,7 @@ const Home = () => {
       </Header>
 
       <Text center title black >
-        $189008,90
+        $9,184.17
       </Text>
 
       <Text center black color="#727479" >
@@ -30,16 +44,20 @@ const Home = () => {
          <TransactionsHeader>
            <Text>Last Purchases</Text>
            <MaterialIcons name="sort" size={24} color="#5196f4" />
-
-           <SearchContainer>
-            <AntDesign  name="search1" size={18} color="#5196f4" />
-            <Search placeholder="Search Transactions" />
-           </SearchContainer>
          </TransactionsHeader>
+
+
+         <SearchContainer>
+            <AntDesign  name="search1" size={18} color="#5196f4" />
+            <Search placeholder="Search Transactions..." />
+           </SearchContainer>
         </>
 
       }
-      
+
+        data={purchaseData} 
+        renderItem={renderPurchase} 
+        showVerticalScrollIndicator={false} 
       />
 
       <StatusBar barStyle="light-content" />
@@ -96,6 +114,17 @@ const Search = styled.TextInput`
   padding: 8px 16px;
   color: #dbdbdb
 `;
+
+const Purchase = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom-width: 1px;
+  border-bottom-color: #393939;
+  padding-bottom: 12px;
+  margin-bottom: 12px
+`;
+
+const PurchaseInfo = styled.View``
 
 const StatusBar = styled.StatusBar``;
 
